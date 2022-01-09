@@ -21,7 +21,7 @@ function TelaDeVenda(){
                 const horas = data.getHours()+":"+data.getMinutes()+":"+data.getSeconds()
                 const mes = data.getMonth() + 1
                 const dia = data.getDate() +"/"+mes+"/"+data.getFullYear()
-                api.efetuarCompra(idDoProduto,idDoCliente,data,horas,quantidade)
+                api.efetuarCompra(idDoProduto,idDoCliente,dia,horas,quantidade)
                 alert('compra efetuada com sucesso')
                }
             }
