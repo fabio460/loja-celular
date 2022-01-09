@@ -1,0 +1,61 @@
+.produto img{
+   width: 200px;
+   margin: 20px;
+}
+.produto{
+  cursor: pointer;
+}
+.produtos{
+  display: flex;
+
+}
+.telaDeVenda{
+  display: flex;
+  padding: 60px;
+}
+.telaDeVenda img{
+  width: 50%;
+  height: 50%;
+}
+button{
+  cursor: pointer;
+}
+.botoes{
+  display: flex;
+  flex-direction: column;
+}
+
+.botoes button{
+  width: 80%;
+  margin: auto;
+  
+  margin-top: 15px;
+}
+form{
+  width: 700px;
+}
+form button{
+  width: 200px;
+  margin: 5px;
+}
+form input{
+  margin: 5px;
+}
+.formulario{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  
+}
+.formulario_left{
+  background-color: rgb(68, 68, 255);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.formulario_right{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
