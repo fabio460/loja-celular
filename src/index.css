@@ -7,7 +7,8 @@
 }
 .produtos{
   display: flex;
-
+  justify-content: center;
+  flex-wrap: wrap;
 }
 .telaDeVenda{
   display: flex;
@@ -58,4 +59,45 @@ form input{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+@media (max-width:400px) {
+  .telaDeVenda{
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+  }
+  .telaDeVenda img{
+    width: 90%;
+    height: 90%;
+  }
+  form{
+    width: 100%;
+    flex-wrap: wrap;
+    margin: auto;
+    justify-content: center;
+  }
+  form input{
+    width: 100%;
+  }
+  .d-flex button,input{
+     width: 100%;
+  }
+  .formulario{
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .formulario_left{
+    background-color: rgb(68, 68, 255);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+  }
+  .formulario_right{
+    padding: 20px;
+  }
+  .formulario_right button,input{
+     width: 100%;
+  }
 }

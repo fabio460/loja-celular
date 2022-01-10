@@ -25,12 +25,9 @@ function TelaDeVenda(){
                 alert('compra efetuada com sucesso')
                }
             }
-            
-            
         } catch (error) {
             alert('usuario não existe')
         }
-    
     }
 
     return<>
