@@ -14,6 +14,7 @@ function Produto({id,nome,imagem,preco,quantidade,descricao}){
     }
     return<>
        <div onClick={getItens} className="produto">    
+           
            <img src={imagem} alt="imagem"/>
            <h5>{nome}</h5>
            <h3>R$ {preco}</h3>

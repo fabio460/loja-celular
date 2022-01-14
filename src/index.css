@@ -71,6 +71,30 @@ form input{
   justify-content: center;
   align-items: center;
 }
+.paginas{
+  display: flex;
+  justify-content: center;
+}
+.paginas button{
+  color: black;
+  padding: 5px 10px;
+  border: 0.2px solid grey;
+  transition: 0.4s;
+}
+.paginas button:hover{
+  background-color: cornflowerblue;
+  
+}
+.btn_prev{
+  border-radius: 7px 0px 0px 7px;
+}
+.btn_next{
+  border-radius: 0px 7px 7px 0px;
+}
+.active{
+  color: white;
+  background-color: cornflowerblue;
+}
 @media (max-width:450px) {
   .telaDeVenda{
     display: flex;
@@ -121,12 +145,12 @@ form input{
     height: 80%;
   
  }
- .produtos{
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  height: 80vh;
-  margin: auto;
-  flex-wrap: wrap;
-}
+  .produtos{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 80vh;
+    margin: auto;
+    flex-wrap: wrap;
+  }
 }

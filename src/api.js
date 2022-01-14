@@ -1,6 +1,6 @@
 import axios from 'axios'
-//const link1 = "http://localhost:4000/" 
-const link = "https://api-loja-celular.herokuapp.com/"
+//const link = "http://localhost:4000/" 
+const link = "https://api-loja-celulares.vercel.app/"
 const api = {
     listarProduto: ()=>{
         const p = axios.get(link)
