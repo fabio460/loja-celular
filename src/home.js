@@ -8,7 +8,7 @@ function Home(){
     const [listaCompleta,setListaCompleta]= useState([])
     const pagina= []
     const inicio = 0
-    const fim = 3  // a variável 'fim' mostra a quantidade de itens por pagina, so alterar o seu valor
+    const fim = 12  // a variável 'fim' mostra a quantidade de itens por pagina, so alterar o seu valor
     
     var finalDaLista = listaCompleta.length
 
@@ -30,6 +30,7 @@ function Home(){
     
     
     const paginacao = (e)=>{
+        
         let elem = e.target.id
         var f =e.target.id
         var i =1
@@ -53,24 +54,24 @@ function Home(){
     
     useEffect(()=>{
       atualizarLista() 
-      
     },[])
     
+ 
 
     return<>
        <Header/>
-       <div className="produtos">
-            {lista.map((item,key)=>{
-                return <Produto chave={key} nome={item.nome} imagem={item.imagem} preco={item.preco} id={item.id} quantidade={item.quantidade} descricao={item.descricao}/>
-            })}
-       </div>
-       <div className="paginas">
-            <button className="btn_prev">{"<<"}</button>
-            {paginaSemDuplicata.map((item,key)=>{
-                return <button className="btn_pagina" id={item}  onClick={paginacao}>{key+1}</button>
-            })}
-            <button className="btn_next">{">>"}</button>
-       </div>
+            <div className="produtos">
+                    {lista.map((item,key)=>{
+                        return <Produto chave={key} nome={item.nome} imagem={item.imagem} preco={item.preco} id={item._id} quantidade={item.quantidade} descricao={item.descricao}/>
+                    })}
+            </div>
+            <div className="paginas">
+                    <button className="btn_prev">{"<<"}</button>
+                    {paginaSemDuplicata.map((item,key)=>{
+                        return <button className="btn_pagina" id={item}  onClick={paginacao}>{key+1}</button>
+                    })}
+                    <button className="btn_next">{">>"}</button>
+            </div>
     </>
 }
 export default Home

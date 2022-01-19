@@ -1,6 +1,6 @@
 import axios from 'axios'
-//const link = "http://localhost:4000/" 
-const link = "https://api-loja-celulares.vercel.app/"
+const link = "http://localhost:4000/" 
+//const link = "https://api-loja-celulares.vercel.app/"
 const api = {
     listarProduto: ()=>{
         const p = axios.get(link)
@@ -24,7 +24,7 @@ const api = {
       return p ;  
     },
     listarUsuarioPorEmail : (email)=>{
-        const p = axios.get(link+'email/'+email)
+        const p = axios.get(link+'cliente/'+email)
         .then(res=>res.data)
       return p ;  
     },
@@ -42,6 +42,11 @@ const api = {
        }).then(res=>console.log(res))
 
       return p 
+    },
+    listarProdutoPorNome: (nome)=>{
+      const p = axios.get(link+nome)
+      .then(res=>res.data)
+    return p ;  
     }
 }
 

@@ -7,19 +7,43 @@ function TelaDeCadastro(){
     const [nome,setNome]=useState()
     const [email,setEmail]=useState()
     const [senha,setSenha]=useState()
-
+    const [valido,setValido]= useState(false)
     const cadastrar = async()=>{
+        validacaoEmail(email)
         if(!nome || !email || !senha){
             alert('favor preencher todos os campos')
         }else{
-            const p =await api.cadastrarUsuario(nome,email,senha)
-            if(p.status === 200){
-                alert('cliente cadastrado com sucesso')
-            }else{
-                alert('usuario ja existe na base de dados')
+            if(valido){
+                const p =await api.cadastrarUsuario(nome,email,senha)
+                if(p.status === 200){
+                    alert('cliente cadastrado com sucesso')
+                }else{
+                    alert('usuario ja existe na base de dados')
+                }
             }
         }
 
+    }
+
+    function validacaoEmail(field) {
+        let  usuario = field.value.substring(0, field.value.indexOf("@"));
+        let  dominio = field.value.substring(field.value.indexOf("@")+ 1, field.value.length);
+                if ((usuario.length >=1) &&
+                    (dominio.length >=3) &&
+                    (usuario.search("@")===-1) &&
+                    (dominio.search("@")===-1) &&
+                    (usuario.search(" ")===-1) &&
+                    (dominio.search(" ")===-1) &&
+                    (dominio.search(".")!==-1) &&
+                    (dominio.indexOf(".") >=1)&&
+                    (dominio.lastIndexOf(".") < dominio.length - 1)) {
+                document.getElementById("exampleInputEmail1").innerHTML="E-mail válido";
+                setValido(true)
+                }
+                else{
+                document.getElementById("exampleInputEmail1").innerHTML="<font color='red'>Email inválido </font>";
+                alert("E-mail invalido");
+                }
     }
     return<>
         <div className="formulario">
@@ -30,7 +54,7 @@ function TelaDeCadastro(){
                 <form>
                     <div class="mb-3">
                         <label  class="form-label">Usuario</label>
-                        <input onChange={e=>setNome(e.target.value)} type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
+                        <input onChange={e=>setNome(e.target.value)} type="text" class="form-control" id="exampleInputName" aria-describedby="emailHelp"/>
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email</label>

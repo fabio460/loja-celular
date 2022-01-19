@@ -9,15 +9,24 @@ function Produto({id,nome,imagem,preco,quantidade,descricao}){
        localStorage.setItem("preco",preco)
        localStorage.setItem("quantidade",quantidade)
        localStorage.setItem("descricao",descricao)
+       
        h.push('/venda')
 
     }
+    let Preco = parseFloat(preco).toFixed(2)
+    let desconto = Preco*0.8
+    let parcelas = desconto/10
     return<>
        <div onClick={getItens} className="produto">    
            
-           <img src={imagem} alt="imagem"/>
-           <h5>{nome}</h5>
-           <h3>R$ {preco}</h3>
+           <div className="produto_top"><img src={imagem} alt="imagem"/></div>
+           <div className="produto_bottom">
+                <div>{nome}</div>
+                <div>de R${Preco} por</div>
+                <h5>R$ {desconto.toFixed(2)} a vista</h5>
+                <div>ou</div>
+                <div>10x de {parcelas.toFixed(2)} sem juros</div>
+           </div>
        </div>
     </>
 }

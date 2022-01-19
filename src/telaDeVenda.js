@@ -4,31 +4,43 @@ import Header from "./header";
 import api from "./api";
 function TelaDeVenda(){
     let h = useHistory()
-    const [email,setEmail]=useState()
+    const [email,setEmail]=useState('')
     const [quantidade,setQuantidade]=useState(0)
     const comprar = async()=>{
-        try {
-            if(quantidade === 0){
+            let estoque = localStorage.getItem('quantidade')
+
+            if(quantidade === '0' || quantidade === ''){
                 alert('insira a quantidade');
-            }else{
-               if(  quantidade > localStorage.getItem('quantidade') ){
-                   alert('quantidade de produto excedida')
-               }else{
-                const idDoEmail =await api.listarUsuarioPorEmail(email)
-                const idDoCliente = idDoEmail[0].id
-                const idDoProduto = localStorage.getItem('id')
-                const data  = new Date()
-                const horas = data.getHours()+":"+data.getMinutes()+":"+data.getSeconds()
-                const mes = data.getMonth() + 1
-                const dia = data.getDate() +"/"+mes+"/"+data.getFullYear()
-                api.efetuarCompra(idDoProduto,idDoCliente,dia,horas,quantidade)
-                alert('compra efetuada com sucesso')
-               }
             }
-        } catch (error) {
-            alert('usuario não existe')
-        }
+            else{
+                if(email === ''){
+                    alert('insira um email')
+                }
+                else{
+                    if(  quantidade > parseInt(estoque) ){
+                        alert('quantidade excedida')
+                    }else{
+                        const idDoEmail =await api.listarUsuarioPorEmail(email)
+                        if(!idDoEmail.email){
+                            alert('usuario não existe na base de dados')
+                        }
+                        else{
+                            const idDoCliente = idDoEmail._id
+                            const idDoProduto = localStorage.getItem("id")
+                            const data  = new Date()
+                            const horas = data.getHours()+"h:"+data.getMinutes()+"m:"+data.getSeconds()+'s'
+                            const mes = data.getMonth() + 1
+                            const dia = data.getDate() +"/"+mes+"/"+data.getFullYear()
+                            api.efetuarCompra(idDoProduto,idDoCliente,dia,horas,quantidade)
+                            alert('compra efetuada com sucesso')
+                        }
+                    }
+                }
+            }
     }
+
+
+
 
     return<>
         <Header/>
